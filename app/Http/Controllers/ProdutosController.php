@@ -35,4 +35,13 @@ class ProdutosController extends Controller
 
         return redirect()->route('lista-produtos');
     }
+
+    public function destroy(Request $request){
+
+        $produto = Produto::Find($request->get('codpro'));
+        $produto->delete();
+
+        return redirect()->route('lista-produtos');
+        
+    }
 }
