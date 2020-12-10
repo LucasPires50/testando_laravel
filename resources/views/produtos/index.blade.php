@@ -23,7 +23,9 @@
 
             <tr>
                 <td>{{$produto->codpro}}</td>
-                <td>{{$produto->nompro}}</td>
+                <td>
+                <a href="{{route('editar-produto')}}?codpro={{$produto->codpro}}">{{$produto->nompro}}</a>
+                </td>
                 <td>{{$produto->estpro}}</td>
                 <td>
                     <form method="post" action="{{route('eleiminar-produtos')}}?codpro={{$produto->codpro}}">

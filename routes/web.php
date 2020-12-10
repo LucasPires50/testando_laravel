@@ -24,3 +24,5 @@ Route::get('/produtos/add', $dir.'ProdutosController@add')->name('adicionar-prod
 Route::post('/produtos/store', $dir.'ProdutosController@store')->name('salvar-produtos');
 
 Route::delete('/produtos/destroy', $dir.'ProdutosController@destroy')->name('eleiminar-produtos');
+
+Route::get('/produtos/edit', $dir.'ProdutosController@edit')->name('editar-produto');

@@ -14,11 +14,12 @@
 
     <div class="form-group">
     <label for="nompro">Produto:</label>
-    <input type="text" class="form-control" id="nompro" name="nompro"  placeholder="nome do produto">
+    <input type="text" class="form-control" id="nompro" name="nompro"  placeholder="nome do produto" value="{{$produto->nompro}}">
+    <input type="hidden" value="{{$produto->codpro}}" name="codpro" id="codpro">
     </div>
     <div class="form-group">
     <label for="estpro">Estoque do produto:</label>
-    <input type="number" class="form-control" id="estpro" name="estpro"     placeholder="quantidade em estoque">
+    <input type="number" class="form-control" id="estpro" name="estpro"     placeholder="quantidade em estoque" value="{{$produto->estpro}}">
     </div>
 
     <button type="submit" class="btn btn-primary" >Salvar</button>
@@ -26,7 +27,7 @@
     <button type="submit" class="btn btn-primary" ><a  style='color:white' href="{{ route('lista-produtos') }}">Voltar</a></button>
 </form>
 
-      </div>
+      </div> 
     </div>
 
 @endsection

@@ -8,11 +8,6 @@ use App\Models\Produto;
 class ProdutosController extends Controller
 {
     public function index() {
-
-        $produto = new Produto();
-        $produto->nompro = "Teclado";
-        $produto->estpro = 120;
-        // $produto->save();
         
         $produtos = Produto::all();
 
@@ -21,18 +16,27 @@ class ProdutosController extends Controller
     }
 
     public function add(){
+        $produto = new Produto();
 
-        return view('produtos.add');
+        return view('produtos.add', compact('produto'));
     }
 
     public function store(Request $request){
         
+        if ($request->get('codpro') == null ) {
         $produto = new Produto();
         $produto->nompro = $request->get('nompro');
         $produto->estpro = $request->get('estpro');
-
         $produto->save();
 
+        }else{
+            $produto = Produto::Find($request->get('codpro'));
+            $produto->nompro = $request->get('nompro');
+            $produto->estpro = $request->get('estpro');
+            $produto->save();
+        }
+
+        
         return redirect()->route('lista-produtos');
     }
 
@@ -43,5 +47,11 @@ class ProdutosController extends Controller
 
         return redirect()->route('lista-produtos');
         
+    }
+
+    public function edit(Request $request){
+        $produto = Produto::find($request->get('codpro'));
+
+        return view('produtos.add', compact('produto'));
     }
 }
